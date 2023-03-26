@@ -7,6 +7,11 @@ import java.io.FileNotFoundException;  // Import this class to handle errors
 import java.util.Scanner; // Import the Scanner class to read text files
 import java.lang.Thread; 
  
+/*
+ * Hecho por Andre Jo
+ * Estructura de datos 
+ * 25/03/2023
+ */
 
 // Main class
 public class Diccionario {
@@ -58,9 +63,7 @@ public class Diccionario {
         arbolbinario arbolin = new arbolbinario();
         arbolbinario arbolrance = new arbolbinario();
         Assertation<arbolbinario, arbolbinario> asociacoin = new Assertation<>();
-        int contadorspan = 0;
-        int contadorin = 0;
-        int contadorrance = 0;
+        
 
 
         // Printing the text on console prior adding
@@ -105,6 +108,10 @@ public class Diccionario {
           Scanner myReader = new Scanner(myObj);
           String[] lStrings;
           while (myReader.hasNextLine()) {
+            int contadorspan = 0;
+            int contadorin = 0;
+            int contadorrance = 0;
+
             String data = myReader.nextLine();
             //traduccion auto
             lStrings = data.split(" ");
@@ -120,8 +127,8 @@ public class Diccionario {
               }
             }
         
-
-            System.out.println("Se detecto los siguientes idiomas con su cantidad de palabras en la oracion" + data + ": \nIngles = "+ contadorin + "\nEspañol = " + contadorspan+ "\nFrances = " + contadorrance);
+            System.out.println( decoration.PURPLE_BACKGROUND + "                       Inicio                         " + decoration.RESET);
+            System.out.println("Se detecto los siguientes idiomas con su cantidad de palabras en la oracion " + data + ": \nIngles = "+ contadorin + "\nEspañol = " + contadorspan+ "\nFrances = " + contadorrance);
             System.out.println(decoration.WHITE_BRIGHT + "Bienvenido, por favor seleccionar la opción que desea traducir la oracion del texto" + decoration.RESET); 
             System.out.println(decoration.CYAN_UNDERLINED + "1.Ingles-Español\n2.Ingles-Frances\n3.Español-Ingles\n4.Español-Frances\n5.Frances-Ingles\n6.Frances-Español\n7.No se imprima todas las opciones" + decoration.RESET );
             int opcion = in.nextInt();

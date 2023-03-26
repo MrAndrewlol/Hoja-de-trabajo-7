@@ -22,7 +22,7 @@ public class Assertation<K, V> {
                 break;
             }
             case 1:{
-                Resultado= traduccions(palabras ,classesTaken[1], 1); //ingles a frances
+                Resultado= traduccions(palabras ,classesTaken[1], 2); //ingles a frances
 
                 break;
             }
@@ -37,12 +37,12 @@ public class Assertation<K, V> {
                 break;
             }
             case 4:{
-                Resultado = traduccions(palabras ,classesTaken[4], 2);// ingles a span
+                Resultado = traduccions(palabras ,classesTaken[4], 1);// Frances a ingles
 
                 break;
             }
             case 5:{
-                Resultado = traduccions(palabras ,classesTaken[5], 2); //france a ingles
+                Resultado = traduccions(palabras ,classesTaken[5], 2); //Frances a span
 
                 break;
             }
@@ -52,7 +52,7 @@ public class Assertation<K, V> {
                 System.out.println("Spanish a Frances "+traduccions(palabras ,classesTaken[3], 2));
                 System.out.println("Ingles a Spanish "+traduccions(palabras ,classesTaken[0], 1));
                 System.out.println("Ingles a Frances "+traduccions(palabras ,classesTaken[1], 2));
-                System.out.println("Frances a Ingles "+traduccions(palabras ,classesTaken[4], 2));
+                System.out.println("Frances a Ingles "+traduccions(palabras ,classesTaken[4], 1));
                 System.out.println("Frances a Spanish "+traduccions(palabras ,classesTaken[5], 2));
                 
 
