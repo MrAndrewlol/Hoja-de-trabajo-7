@@ -51,12 +51,17 @@ public class Diccionario {
     }
     
     public static void main(String[] args){ 
-        BinaryTree arbolbi = new BinaryTree();
+        arbolbinario arbolspan = new arbolbinario();
+        arbolbinario arbolin = new arbolbinario();
+        arbolbinario arbolrance = new arbolbinario();
+        int contadorspan = 0;
+        int contadorin = 0;
+        int contadorrance = 0;
+
+
         // Printing the text on console prior adding
         // the desired color
         System.out.println(decoration.YELLOW_BRIGHT + "Ingrese la ruta del archivo ej C:\\ejemplos\\example1.txt" + decoration.RESET);
-        
-        
         Scanner in = new Scanner(System.in);
         String fpath = in.nextLine();
         Diccionario.esperando(200);
@@ -68,32 +73,63 @@ public class Diccionario {
         Scanner myReader = new Scanner(myObj);
         while (myReader.hasNextLine()) {
           String data = myReader.nextLine();
-          String[] listaString = data.split(",");
-          arbolbi.filldic(listaString);
-          System.out.println(decoration.WHITE_BACKGROUND + "    " + decoration.RESET + " Se llenaron las palabaras del diccionario " +  decoration.WHITE_BACKGROUND + "    " + decoration.RESET);
-          
-
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+          arbolin.add(data);
+          String[] listatarget = data.split(data);
+          String datafra = ""+ listatarget [2] + listatarget [0] + listatarget[1] + "";
+          arbolrance.add(datafra);
+          String dataspa = listatarget[1] + listatarget [0] + listatarget [2] + "";
+          arbolspan.add(dataspa);
         }
+        System.out.println(decoration.WHITE_BACKGROUND + "    " + decoration.RESET + " Se llenaron las palabaras del diccionario " +  decoration.WHITE_BACKGROUND + "    " + decoration.RESET);
         myReader.close();
       } catch (FileNotFoundException e) {
         System.out.println("An error occurred.");
         e.printStackTrace();
       }
+
+
+
+
+      
+      System.out.println("Ingrese la ruta del archivo que desea usar para traducir \nej C:\\ejemplos\\example1.txt");
+      fpath = in.nextLine();
+
+
+        
+        try {
+          File myObj = new File(fpath);
+          Scanner myReader = new Scanner(myObj);
+          String[] lStrings;
+          while (myReader.hasNextLine()) {
+            String data = myReader.nextLine();
+            //traduccion auto
+            lStrings = data.split(" ");
+            for (int k = 0; k < lStrings.length ; k++ ){
+              if (arbolin.containsNode(lStrings[k]) == true){
+                contadorin ++;
+              }
+              if (arbolrance.containsNode(lStrings[k]) == true){
+                contadorrance ++;
+              }
+              if (arbolin.containsNode(lStrings[k]) == true){
+                contadorspan ++;
+              }
+            }
+            
+
+            System.out.println(decoration.WHITE_BRIGHT + "Bienvenido, por favor seleccionar la opción que desea traducir la oracion del texto" + decoration.RESET); 
+            System.out.println(decoration.CYAN_UNDERLINED + "1.Ingles\n2.Español\n3.Frances" + decoration.RESET );
+            int opcion = in.nextInt();
+            in.nextLine();
+ 
+           
+
+          }
+          myReader.close();
+        } catch (FileNotFoundException e) {
+          System.out.println("An error occurred.");
+          e.printStackTrace();
+        }
 
         
     }
