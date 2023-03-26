@@ -13,6 +13,8 @@ public class Diccionario {
 
     public static void esperando(int segundo){
         String loading = "Esperando.";
+
+       
        
         
         try {
@@ -51,9 +53,11 @@ public class Diccionario {
     }
     
     public static void main(String[] args){ 
+      
         arbolbinario arbolspan = new arbolbinario();
         arbolbinario arbolin = new arbolbinario();
         arbolbinario arbolrance = new arbolbinario();
+        Assertation<arbolbinario, arbolbinario> asociacoin = new Assertation<>();
         int contadorspan = 0;
         int contadorin = 0;
         int contadorrance = 0;
@@ -64,7 +68,7 @@ public class Diccionario {
         System.out.println(decoration.YELLOW_BRIGHT + "Ingrese la ruta del archivo ej C:\\ejemplos\\example1.txt" + decoration.RESET);
         Scanner in = new Scanner(System.in);
         String fpath = in.nextLine();
-        Diccionario.esperando(200);
+        Diccionario.esperando(150);
         
         
         
@@ -74,10 +78,10 @@ public class Diccionario {
         while (myReader.hasNextLine()) {
           String data = myReader.nextLine();
           arbolin.add(data);
-          String[] listatarget = data.split(data);
-          String datafra = ""+ listatarget [2] + listatarget [0] + listatarget[1] + "";
+          String[] listatarget = data.split(",");
+          String datafra = ""+ listatarget [2] +"," + listatarget [0] +"," + listatarget[1] + "";
           arbolrance.add(datafra);
-          String dataspa = listatarget[1] + listatarget [0] + listatarget [2] + "";
+          String dataspa = listatarget[1] +","+ listatarget [0] + ","+ listatarget [2] + "";
           arbolspan.add(dataspa);
         }
         System.out.println(decoration.WHITE_BACKGROUND + "    " + decoration.RESET + " Se llenaron las palabaras del diccionario " +  decoration.WHITE_BACKGROUND + "    " + decoration.RESET);
@@ -111,21 +115,37 @@ public class Diccionario {
               if (arbolrance.containsNode(lStrings[k]) == true){
                 contadorrance ++;
               }
-              if (arbolin.containsNode(lStrings[k]) == true){
+              if (arbolspan.containsNode(lStrings[k]) == true){
                 contadorspan ++;
               }
             }
-            
+        
 
+            System.out.println("Se detecto los siguientes idiomas con su cantidad de palabras en la oracion" + data + ": \nIngles = "+ contadorin + "\nEspañol = " + contadorspan+ "\nFrances = " + contadorrance);
             System.out.println(decoration.WHITE_BRIGHT + "Bienvenido, por favor seleccionar la opción que desea traducir la oracion del texto" + decoration.RESET); 
-            System.out.println(decoration.CYAN_UNDERLINED + "1.Ingles\n2.Español\n3.Frances" + decoration.RESET );
+            System.out.println(decoration.CYAN_UNDERLINED + "1.Ingles-Español\n2.Ingles-Frances\n3.Español-Ingles\n4.Español-Frances\n5.Frances-Ingles\n6.Frances-Español\n7.No se imprima todas las opciones" + decoration.RESET );
             int opcion = in.nextInt();
             in.nextLine();
+            System.out.println(decoration.WHITE + "                   " + decoration.RESET);
+            System.out.println(asociacoin.traductor(arbolin, arbolspan, arbolrance, opcion, lStrings));
  
-           
-
           }
           myReader.close();
+
+
+          System.out.println("Imprimiendo el diccionario en orden, Pulsa ENTER PARA CONTINUAR ");
+          in.nextLine();
+          Diccionario.esperando(100);
+
+          System.out.println(decoration.BLACK_BRIGHT + "Diccionario en Ingles ordenado" + decoration.RESET);
+          arbolin.inorder();
+          System.out.println(decoration.BLUE_UNDERLINED + "\nDiccionario en Frances ordenado" + decoration.RESET);
+          arbolrance.inorder();
+          System.out.println(decoration.RED_BRIGHT + "\nDiccionario en Ingles ordenado" + decoration.RESET);
+          arbolspan.inorder();
+
+
+
         } catch (FileNotFoundException e) {
           System.out.println("An error occurred.");
           e.printStackTrace();
